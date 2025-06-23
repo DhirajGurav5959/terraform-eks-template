@@ -1,0 +1,46 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: eks-cluster
+  title: "Create EKS Cluster"
+  description: "Create an EKS cluster using Terraform"
+spec:
+  owner: dhirajgurav7.1@gmail.com
+  type: service
+
+  parameters:
+    - title: EKS Cluster Info
+      required:
+        - clusterName
+        - region
+        - vpcId
+        - subnetIds
+      properties:
+        clusterName:
+          type: string
+          title: EKS Cluster Name
+        region:
+          type: string
+          title: AWS Region
+          default: "us-west-2"
+        vpcId:
+          type: string
+          title: VPC ID
+        subnetIds:
+          type: array
+          title: Subnet IDs
+          items:
+            type: string
+
+  steps:
+    - id: terraform
+      name: Provision EKS Cluster
+      action: terraform:apply
+      input:
+        repoUrl: github.com/DhirajGurav5959/terraform-eks-template
+        path: /
+        tfVars:
+          cluster_name: ${{ parameters.clusterName }}
+          region: ${{ parameters.region }}
+          vpc_id: ${{ parameters.vpcId }}
+          subnet_ids: ${{ parameters.subnetIds }}
