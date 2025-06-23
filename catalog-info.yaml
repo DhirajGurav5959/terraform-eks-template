@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: eks-cluster-template
+  description: A Backstage template to create an EKS cluster using Terraform.
+  annotations:
+    github.com/project-slug: github.com/DhirajGurav5959/terraform-eks-template
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: service
+  owner: dhirajgurav7.1@gmail.com
+  lifecycle: experimental
