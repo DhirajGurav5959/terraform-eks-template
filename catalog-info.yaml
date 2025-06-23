@@ -8,5 +8,5 @@ metadata:
     backstage.io/techdocs-ref: dir:.
 spec:
   type: service
-  owner: owner: user:default/guest
+  owner: user:default/guest
   lifecycle: experimental
